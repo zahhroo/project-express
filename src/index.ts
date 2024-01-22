@@ -7,6 +7,10 @@ import express, { Request, Response } from "express"
 import { validateCube } from "./middleware/validateCube"
 import routeBangunDatar from "./route/bangunDatar"
 import routeBangunRuang from "./route/bangunRuang"
+import routeEvent from "./route/eventRoute"
+import routeSeat from "./route/seatRoute"
+import routeUser from "./route/userRoute"
+import routeTicket from "./route/ticketRoute"
 
 // buat wadah untuk inisiasi express
  const app = express()
@@ -97,6 +101,7 @@ app.post(`/balok`, validateCube, (request: Request, response: Response) => {
 
 // register route of bangun datar
 app.use(routeBangunDatar, routeBangunRuang)
+app.use(routeEvent, routeSeat, routeUser, routeTicket)
 // app.use(routeBangunRuang)
 
 // run server
